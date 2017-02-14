@@ -1,4 +1,4 @@
-package consursantes;
+package concursantes;
 
 public interface Poema {
 	

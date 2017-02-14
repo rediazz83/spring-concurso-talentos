@@ -1,6 +1,6 @@
-package consursantes.impl;
+package concursantes.impl;
 
-import consursantes.Poema;
+import concursantes.Poema;
 
 public class Soneto implements Poema {
 

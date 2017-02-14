@@ -1,4 +1,4 @@
-package consursantes;
+package concursantes;
 
 import exceptions.EjecucionException;
 

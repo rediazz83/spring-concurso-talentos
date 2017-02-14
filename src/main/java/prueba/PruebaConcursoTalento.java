@@ -3,7 +3,7 @@ package prueba;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import consursantes.Concursante;
+import concursantes.Concursante;
 
 public class PruebaConcursoTalento {
 

@@ -9,8 +9,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import consursantes.Concursante;
-import consursantes.impl.Malabarista;
+import concursantes.Concursante;
+import concursantes.impl.Malabarista;
+import concursantes.impl.Musico;
 
 public class ConcursoTalentosTest {
 
@@ -18,14 +19,20 @@ public class ConcursoTalentosTest {
 	private ApplicationContext context;
 	private Concursante malabarista;
 	private Concursante malabaristaRecitador;
+	private Concursante pianista;
+	private Concursante saxofonista;
 	
 	public static final int PELOTAS_ESPERADAS = 5;
+	public static final String CANCION_NOCHE_DE_PAZ = "Noche de Paz";
+	public static final String CANCION_EQUINOX = "Equinox";
 
 	@Before
 	public void setUp() {
 		context = new ClassPathXmlApplicationContext("spring-context.xml");
 		malabarista = (Concursante) context.getBean("malabarista");
 		malabaristaRecitador = (Concursante) context.getBean("malabarstaRecitador");
+		pianista = (Concursante) context.getBean("pianista");
+		saxofonista = (Concursante) context.getBean("saxofonista");
 	}
 
 	@Test
@@ -49,5 +56,26 @@ public class ConcursoTalentosTest {
 
 		log.info("Fin ejecucion malabarista recitador");
 	}
+
+	@Test
+	public void pianistaTest() {
+		log.info("Inicio ejecucion pianista");
+
+		pianista.ejecutar();
+
+		assertEquals("El nombre de la cancion no coincide.", CANCION_NOCHE_DE_PAZ, ((Musico) pianista).getCancion());
+
+		log.info("Fin ejecucion pianista");
+	}	
 	
+	@Test
+	public void saxofonistaTest() {
+		log.info("Inicio ejecucion saxofonista");
+
+		saxofonista.ejecutar();
+
+		assertEquals("El nombre de la cancion no coincide.", CANCION_EQUINOX, ((Musico) saxofonista).getCancion());
+
+		log.info("Fin ejecucion saxofonista");
+	}
 }

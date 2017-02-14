@@ -1,6 +1,6 @@
-package consursantes.impl;
+package concursantes.impl;
 
-import consursantes.Concursante;
+import concursantes.Concursante;
 import exceptions.EjecucionException;
 
 public class Malabarista implements Concursante {

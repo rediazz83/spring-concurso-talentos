@@ -1,6 +1,6 @@
-package consursantes.impl;
+package concursantes.impl;
 
-import consursantes.Poema;
+import concursantes.Poema;
 import exceptions.EjecucionException;
 
 public class MalabaristaRecitador extends Malabarista {

@@ -3,15 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="soneto" class="consursantes.impl.Soneto" />
+	<bean id="soneto" class="concursantes.impl.Soneto" />
+	<bean id="piano" class="concursantes.impl.Piano" />
+	<!-- Se reemplaza por un inner bean -->
+	<!-- bean id="saxo" class="concursantes.impl.Saxo" /-->
 
-	<bean id="malabarista" class="consursantes.impl.Malabarista">
+	<bean id="malabarista" class="concursantes.impl.Malabarista">
 		<constructor-arg value="5" />
 	</bean>
 	
-	<bean id="malabarstaRecitador" class="consursantes.impl.MalabaristaRecitador">
+	<bean id="malabarstaRecitador" class="concursantes.impl.MalabaristaRecitador">
 		<constructor-arg value="5" />
 		<constructor-arg ref="soneto" />
+	</bean>
+	
+	<bean id="pianista" class="concursantes.impl.Musico">
+		<property name="cancion" value="Noche de Paz" />
+		<property name="instrumento" ref="piano" />
+	</bean>
+	
+	<bean id="saxofonista" class="concursantes.impl.Musico">
+		<property name="cancion" value="Equinox" />
+		<!-- inner bean, no se comparte con otros beans -->
+		<property name="instrumento">
+			<bean class="concursantes.impl.Saxo" />
+		</property>
 	</bean>
 
 </beans>
