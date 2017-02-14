@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<context:component-scan base-package="concursantes" />
 
-	<!-- bean id="soneto" class="concursantes.impl.Soneto" />
-	<bean id="piano" class="concursantes.impl.Piano" />
+	<!-- bean id="soneto" class="concursantes.impl.Soneto" /> <bean id="piano" 
+		class="concursantes.impl.Piano" /> <bean id="malabarista" class="concursantes.impl.Malabarista"> 
+		<constructor-arg value="5" /> </bean> <bean id="malabarstaRecitador" class="concursantes.impl.MalabaristaRecitador"> 
+		<constructor-arg value="5" /> <constructor-arg ref="soneto" /> </bean> <bean 
+		id="pianista" class="concursantes.impl.Musico"> <property name="cancion" 
+		value="Noche de Paz" /> <property name="instrumento" ref="piano" /> </bean -->
 
-	<bean id="malabarista" class="concursantes.impl.Malabarista">
-		<constructor-arg value="5" />
-	</bean>
-	
-	<bean id="malabarstaRecitador" class="concursantes.impl.MalabaristaRecitador">
-		<constructor-arg value="5" />
-		<constructor-arg ref="soneto" />
-	</bean>
-	
-	<bean id="pianista" class="concursantes.impl.Musico">
-		<property name="cancion" value="Noche de Paz" />
-		<property name="instrumento" ref="piano" />
-	</bean -->
-	
 	<bean id="jasonSax" class="concursantes.impl.Musico">
 		<property name="cancion" value="Equinox" />
 		<!-- inner bean, no se comparte con otros beans -->
@@ -31,5 +22,16 @@
 			<bean class="concursantes.impl.Saxo" />
 		</property>
 	</bean>
+
+	<aop:config>
+		<aop:aspect ref="publico">
+			<aop:pointcut expression="execution(* concursantes.Concursante.ejecutar(..))"
+				id="show" />
+			<aop:before pointcut-ref="show" method="sentarse" />
+			<aop:before pointcut-ref="show" method="apagarCelulares" />
+			<aop:after-returning pointcut-ref="show" method="aplaudir" />
+			<aop:after-throwing pointcut-ref="show" method="devolucion" />
+		</aop:aspect>
+	</aop:config>
 
 </beans>

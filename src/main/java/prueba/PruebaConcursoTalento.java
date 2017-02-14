@@ -11,7 +11,7 @@ public class PruebaConcursoTalento {
 
 	public static void main(String[] args) {
 		context = new ClassPathXmlApplicationContext("spring-context.xml");
-		Concursante malabarista = (Concursante) context.getBean("malabarista");
+		Concursante malabarista = (Concursante) context.getBean("solei");
 		malabarista.ejecutar();
 	}
 
