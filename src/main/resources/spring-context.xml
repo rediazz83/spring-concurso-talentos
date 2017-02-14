@@ -3,6 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="malabarista" class="consursantes.impl.Malabarista"/>
+	<bean id="soneto" class="consursantes.impl.Soneto" />
+
+	<bean id="malabarista" class="consursantes.impl.Malabarista">
+		<constructor-arg value="5" />
+	</bean>
+	
+	<bean id="malabarstaRecitador" class="consursantes.impl.MalabaristaRecitador">
+		<constructor-arg value="5" />
+		<constructor-arg ref="soneto" />
+	</bean>
 
 </beans>

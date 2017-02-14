@@ -17,13 +17,15 @@ public class ConcursoTalentosTest {
 	private static Log log = LogFactory.getLog(ConcursoTalentosTest.class);
 	private ApplicationContext context;
 	private Concursante malabarista;
-
+	private Concursante malabaristaRecitador;
+	
 	public static final int PELOTAS_ESPERADAS = 5;
 
 	@Before
 	public void setUp() {
 		context = new ClassPathXmlApplicationContext("spring-context.xml");
 		malabarista = (Concursante) context.getBean("malabarista");
+		malabaristaRecitador = (Concursante) context.getBean("malabarstaRecitador");
 	}
 
 	@Test
@@ -37,4 +39,15 @@ public class ConcursoTalentosTest {
 		log.info("Fin ejecucion malabarista");
 	}
 
+	@Test
+	public void malabaristaRecitadorTest() {
+		log.info("Inicio ejecucion malabarista recitador");
+
+		malabaristaRecitador.ejecutar();
+
+		assertEquals("Numero de pelotas no coincide.", PELOTAS_ESPERADAS, ((Malabarista) malabaristaRecitador).getPelotas());
+
+		log.info("Fin ejecucion malabarista recitador");
+	}
+	
 }
