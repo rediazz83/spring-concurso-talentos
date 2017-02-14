@@ -27,10 +27,11 @@
 		<aop:aspect ref="publico">
 			<aop:pointcut expression="execution(* concursantes.Concursante.ejecutar(..))"
 				id="show" />
-			<aop:before pointcut-ref="show" method="sentarse" />
-			<aop:before pointcut-ref="show" method="apagarCelulares" />
-			<aop:after-returning pointcut-ref="show" method="aplaudir" />
-			<aop:after-throwing pointcut-ref="show" method="devolucion" />
+			<!-- aop:before pointcut-ref="show" method="sentarse" /> <aop:before pointcut-ref="show" 
+				method="apagarCelulares" /> <aop:after-returning pointcut-ref="show" method="aplaudir" 
+				/> <aop:after-throwing pointcut-ref="show" method="devolucion" / -->
+
+			<aop:around pointcut-ref="show" method="monitorearShow" />
 		</aop:aspect>
 	</aop:config>
 
