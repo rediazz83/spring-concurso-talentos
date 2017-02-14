@@ -1,7 +1,10 @@
 package concursantes.impl;
 
+import org.springframework.stereotype.Component;
+
 import concursantes.Poema;
 
+@Component("poema")
 public class Soneto implements Poema {
 
 	@Override

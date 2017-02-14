@@ -1,7 +1,10 @@
 package concursantes.impl;
 
+import org.springframework.stereotype.Component;
+
 import concursantes.Instrumento;
 
+@Component
 public class Saxo implements Instrumento {
 
 	@Override

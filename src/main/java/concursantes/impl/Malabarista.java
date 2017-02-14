@@ -1,8 +1,13 @@
 package concursantes.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import concursantes.Concursante;
 import exceptions.EjecucionException;
 
+@Component("solei")
 public class Malabarista implements Concursante {
 
 	private int pelotas = 5;
@@ -10,7 +15,8 @@ public class Malabarista implements Concursante {
 	public Malabarista() {
 	}
 
-	public Malabarista(int pelotas) {
+	@Autowired
+	public Malabarista(@Value("5") int pelotas) {
 		this.pelotas = pelotas;
 	}
 	
