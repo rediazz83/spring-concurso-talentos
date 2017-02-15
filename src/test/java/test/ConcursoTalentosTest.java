@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import concursantes.Adivinador;
 import concursantes.Concursante;
+import concursantes.Pensador;
 import concursantes.impl.Malabarista;
 import concursantes.impl.Musico;
 
@@ -36,10 +38,17 @@ public class ConcursoTalentosTest {
 	@Autowired
 	@Qualifier("jasonSax")
 	private Concursante saxofonista;
+	
+	@Autowired
+	private Pensador voluntario;
+	
+	@Autowired
+	private Adivinador mago;
 
 	public static final int PELOTAS_ESPERADAS = 5;
 	public static final String CANCION_NOCHE_DE_PAZ = "Noche de Paz";
 	public static final String CANCION_EQUINOX = "Equinox";
+	public static final String PENSAMIENTO = "O'Hiigins Campeon del clausura 2017";
 
 	@Test
 	public void malabaristaTest() {
@@ -85,4 +94,16 @@ public class ConcursoTalentosTest {
 
 		log.info("Fin ejecucion saxofonista");
 	}
+	
+	@Test
+	public void magoAdivinadorTest() {
+		log.info("Inicio ejecucion mago");
+
+		voluntario.pensarEnAlgo("O'Hiigins Campeon del clausura 2017");
+
+		assertEquals("El mago no adivinó el penasmiento.", PENSAMIENTO, mago.getPensamientos());
+
+		log.info("Fin ejecucion mago");		
+	}
+	
 }
